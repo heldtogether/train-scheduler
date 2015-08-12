@@ -9,7 +9,10 @@ class Graph
 	end
 
 	def add_vertex(tail, head, weight)
-		@vertices[tail] = {head=>weight}
+		if ! @vertices.has_key? tail
+			@vertices[tail] = {}
+		end
+		@vertices[tail][head] = weight
 	end
 
 end
