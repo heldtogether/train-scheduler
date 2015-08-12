@@ -47,4 +47,12 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return distance to vertex 1 edge away" do
+
+		graph = Graph.new
+		graph.add_vertex('A', 'D', 5)
+		expect(graph.distance('A', 'D')).to eq 5
+
+	end
+
 end
