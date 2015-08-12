@@ -11,7 +11,7 @@ RSpec.describe Graph do
 
 	end
 
-	it "can add a vertex" do
+	it "can add an edge" do
 
 		vertices = Hash.new
 		vertices['A'] = {'B' => 5}
@@ -22,7 +22,7 @@ RSpec.describe Graph do
 
 	end
 
-	it "can add 2 vertices" do
+	it "can add 2 edges" do
 
 		vertices = Hash.new
 		vertices['A'] = {'B' => 5}
