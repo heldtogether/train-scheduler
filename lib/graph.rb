@@ -8,4 +8,8 @@ class Graph
 		@vertices = {}
 	end
 
+	def add_vertex(tail, head, weight)
+		@vertices[tail] = {head=>weight}
+	end
+
 end
