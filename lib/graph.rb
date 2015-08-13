@@ -73,6 +73,22 @@ class Graph
 
 			distances[tail] = 0
 
+			shortest_distance = MAX
+			closest_vertex = nil
+
+			if (@edges.has_key? tail)
+				@edges[tail].each do | vertex, distance |
+					if (distance < shortest_distance)
+						closest_vertex = vertex
+						shortest_distance = distance
+					end
+				end
+			end
+
+			if (closest_vertex)
+				distances[closest_vertex] = shortest_distance
+			end
+
 		end
 
 		return distances
