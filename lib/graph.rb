@@ -169,14 +169,14 @@ class Graph
 
 		next_frontier = [tail]
 		trips = 0
-		trip_length = 0
+		trip_stops = 0
 
 		while ! next_frontier.empty?
 
 			frontier = next_frontier
 			next_frontier = []
 
-			trip_length = trip_length + 1
+			trip_stops = trip_stops + 1
 
 			frontier.each do | vertex |
 
@@ -192,7 +192,7 @@ class Graph
 
 								when MaxStops
 
-									if trip_length > limit
+									if trip_stops > limit
 										return trips
 									else
 										trips = trips + 1
@@ -200,11 +200,11 @@ class Graph
 
 								when ExactStops
 
-									if trip_length == limit
+									if trip_stops == limit
 										trips = trips + 1
 									end
 
-									if trip_length > limit
+									if trip_stops > limit
 										return trips
 									end
 
