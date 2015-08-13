@@ -91,4 +91,13 @@ RSpec.describe Graph do
 
 	end
 
+	it "can add 3 vertices" do
+
+		graph = Graph.new
+		graph.add_edge('A', 'B', 5)
+		graph.add_edge('B', 'C', 4)
+		expect(graph.vertices).to eq ['A', 'B', 'C']
+
+	end
+
 end
