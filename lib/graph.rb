@@ -76,7 +76,6 @@ class Graph
 			current_distance = 0
 			current_vertex = tail
 			next_vertex = nil
-			current_shortest = MAX
 
 			while ! unvisited.empty?
 
@@ -96,8 +95,8 @@ class Graph
 							current_shortest = tentative_distance
 							next_vertex = vertex
 
-							if next_vertex == head
-								break
+							if head && next_vertex == head
+								return distances
 							end
 
 						end
