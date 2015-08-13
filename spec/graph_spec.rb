@@ -75,4 +75,11 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return 'NO SUCH ROUTE' if no route exists" do
+
+		graph = Graph.new
+		expect(graph.path_distance(['A', 'B'])).to eq 'NO SUCH ROUTE'
+
+	end
+
 end

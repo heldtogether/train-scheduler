@@ -2,6 +2,9 @@
 
 class Graph
 
+	class NoRouteException < Exception
+	end
+
 	attr_accessor :vertices
 
 	def initialize ()
@@ -19,23 +22,27 @@ class Graph
 		if (@vertices.has_key? tail) && (@vertices[tail].has_key? head)
 			return @vertices[tail][head]
 		else
-			return 0
+			raise NoRouteException.new
 		end
 	end
 
 	def path_distance(path)
-		if path.count >= 2
-			previous_node = nil
-			distance = 0
-			path.each do | node |
-				if previous_node
-					distance += edge_distance(previous_node, node)
+		begin
+			if path.count >= 2
+				previous_node = nil
+				distance = 0
+				path.each do | node |
+					if previous_node
+						distance += edge_distance(previous_node, node)
+					end
+					previous_node = node
 				end
-				previous_node = node
+				return distance
+			else
+				return 0
 			end
-			return distance
-		else
-			return 0
+		rescue NoRouteException
+			return 'NO SUCH ROUTE'
 		end
 	end
 
