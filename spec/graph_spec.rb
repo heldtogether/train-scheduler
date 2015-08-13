@@ -268,4 +268,13 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return the number of trips along circular route with exact stops" do
+
+		graph = Graph.new
+		graph.add_edge('A', 'B', 5)
+		graph.add_edge('B', 'A', 5)
+		expect(graph.num_trips('A', 'A', 2, Graph::ExactStops)).to eq 1
+
+	end
+
 end

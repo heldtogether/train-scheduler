@@ -10,6 +10,8 @@ class Graph
 	MAX = 2 ** (N_BITS - 2) - 1
 
 	MaxStops = 1
+	ExactStops = 2
+
 	attr_accessor :edges, :vertices
 
 	def initialize ()
@@ -193,6 +195,16 @@ class Graph
 										return trips
 									else
 										trips = trips + 1
+									end
+
+								when ExactStops
+
+									if trip_length == limit
+										trips = trips + 1
+									end
+
+									if trip_length > limit
+										return trips
 									end
 
 								end
