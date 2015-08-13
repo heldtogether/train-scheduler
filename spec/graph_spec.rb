@@ -82,6 +82,14 @@ RSpec.describe Graph do
 
 	end
 
+	it "can add 1 vertex" do
+
+		graph = Graph.new
+		graph.add_vertex('A')
+		expect(graph.vertices).to eq ['A']
+
+	end
+
 	it "can add 2 vertices" do
 
 		graph = Graph.new

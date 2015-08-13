@@ -12,13 +12,15 @@ class Graph
 		@edges = {}
 	end
 
+	def add_vertex(vertex)
+		if ! @vertices.include? vertex
+			@vertices.push vertex
+		end
+	end
+
 	def add_edge(tail, head, weight)
-		if ! @vertices.include? tail
-			@vertices.push tail
-		end
-		if ! @vertices.include? head
-			@vertices.push head
-		end
+		add_vertex(tail)
+		add_vertex(head)
 		if ! @edges.has_key? tail
 			@edges[tail] = {}
 		end
