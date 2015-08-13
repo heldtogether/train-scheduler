@@ -203,4 +203,15 @@ RSpec.describe Graph do
 
 	end
 
+	it "doesn't get caught in a loop between 3 vertices" do
+
+		graph = Graph.new
+		graph.add_vertex('D')
+		graph.add_edge('A', 'B', 5)
+		graph.add_edge('B', 'C', 4)
+		graph.add_edge('C', 'A', 5)
+		expect(graph.shortest_path('A', 'C')).to eq 9
+
+	end
+
 end

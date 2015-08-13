@@ -91,7 +91,7 @@ class Graph
 							distances[vertex] = tentative_distance
 						end
 
-						if tentative_distance < current_shortest
+						if (tentative_distance < current_shortest) && (unvisited.include? vertex)
 							current_shortest = tentative_distance
 							next_vertex = vertex
 
