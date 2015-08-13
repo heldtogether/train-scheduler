@@ -62,31 +62,54 @@ class Graph
 	def shortest_path(tail, head = nil)
 
 		distances = {}
-		visited = {}
+		unvisited = []
 
-		if (@vertices.count > 0)
+		if @vertices.count > 0
 
 			@vertices.each do | vertex |
 				distances[vertex] = MAX
-				visited[vertex] = nil
+				unvisited.push(vertex)
 			end
 
 			distances[tail] = 0
 
-			shortest_distance = MAX
-			closest_vertex = nil
+			current_distance = 0
+			current_vertex = tail
+			next_vertex = nil
+			current_shortest = MAX
 
-			if (@edges.has_key? tail)
-				@edges[tail].each do | vertex, distance |
-					if (distance < shortest_distance)
-						closest_vertex = vertex
-						shortest_distance = distance
+			while ! unvisited.empty?
+
+				if @edges.has_key? current_vertex
+
+					current_shortest = MAX
+
+					@edges[current_vertex].each do | vertex, distance |
+
+						tentative_distance = current_distance + distance
+
+						if tentative_distance < distances[vertex]
+							distances[vertex] = tentative_distance
+						end
+
+						if tentative_distance < current_shortest
+							current_shortest = tentative_distance
+							next_vertex = vertex
+						end
+
 					end
-				end
-			end
 
-			if (closest_vertex)
-				distances[closest_vertex] = shortest_distance
+				else
+
+					break
+
+				end
+
+				unvisited.delete(current_vertex)
+
+				current_distance = current_distance + @edges[current_vertex][next_vertex]
+				current_vertex = next_vertex
+
 			end
 
 		end

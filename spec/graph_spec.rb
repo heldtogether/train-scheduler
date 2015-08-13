@@ -142,4 +142,20 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return shortest path when 3 vertices" do
+
+		shortest_path = Hash.new
+		shortest_path['A'] = 0;
+		shortest_path['B'] = 5;
+		shortest_path['C'] = 9;
+
+		graph = Graph.new
+		graph.add_vertex('A')
+		graph.add_vertex('B')
+		graph.add_edge('A', 'B', 5)
+		graph.add_edge('B', 'C', 4)
+		expect(graph.shortest_path('A')).to eq shortest_path
+
+	end
+
 end
