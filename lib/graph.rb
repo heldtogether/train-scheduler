@@ -12,50 +12,74 @@ class Graph
 	attr_accessor :edges, :vertices
 
 	def initialize ()
+
 		@vertices = []
 		@edges = {}
+
 	end
 
 	def add_vertex(vertex)
+
 		if ! @vertices.include? vertex
 			@vertices.push vertex
 		end
+
 	end
 
 	def add_edge(tail, head, weight)
+
 		add_vertex(tail)
 		add_vertex(head)
+
 		if ! @edges.has_key? tail
 			@edges[tail] = {}
 		end
+
 		@edges[tail][head] = weight
+
 	end
 
 	def edge_distance(tail, head)
+
 		if (@edges.has_key? tail) && (@edges[tail].has_key? head)
 			return @edges[tail][head]
 		else
 			raise NoRouteException.new
 		end
+
 	end
 
 	def path_distance(path)
+
 		begin
+
 			if path.count >= 2
+
 				previous_vertex = nil
 				distance = 0
+
 				path.each do | vertex |
+
 					if previous_vertex
 						distance += edge_distance(previous_vertex, vertex)
 					end
+
 					previous_vertex = vertex
+
 				end
+
 				return distance
+
 			else
+
 				return 0
+
 			end
+
 		rescue NoRouteException
+
 			return 'NO SUCH ROUTE'
+
 		end
 	end
 
@@ -91,7 +115,9 @@ class Graph
 							distances[vertex] = tentative_distance
 						end
 
-						if (tentative_distance < current_shortest) && (unvisited.include? vertex)
+						if (tentative_distance < current_shortest) &&
+												(unvisited.include? vertex)
+
 							current_shortest = tentative_distance
 							next_vertex = vertex
 
@@ -111,7 +137,9 @@ class Graph
 
 				unvisited.delete(current_vertex)
 
-				current_distance = current_distance + @edges[current_vertex][next_vertex]
+				new_distance = @edges[current_vertex][next_vertex]
+
+				current_distance = current_distance + new_distance
 				current_vertex = next_vertex
 
 			end
@@ -123,6 +151,7 @@ class Graph
 	end
 
 	def shortest_path(tail, head)
+
 		paths = shortest_paths(tail, head)
 
 		if paths.has_key? head
