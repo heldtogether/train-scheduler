@@ -51,7 +51,16 @@ RSpec.describe Graph do
 
 		graph = Graph.new
 		graph.add_vertex('A', 'D', 5)
-		expect(graph.distance('A', 'D')).to eq 5
+		expect(graph.edge_distance('A', 'D')).to eq 5
+
+	end
+
+	it "can return distance to vertex 2 edge away" do
+
+		graph = Graph.new
+		graph.add_vertex('A', 'B', 5)
+		graph.add_vertex('B', 'C', 4)
+		expect(graph.path_distance(['A', 'B', 'C'])).to eq 9
 
 	end
 
