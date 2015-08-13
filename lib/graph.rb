@@ -9,6 +9,7 @@ class Graph
 	N_BITS = N_BYTES * 8
 	MAX = 2 ** (N_BITS - 2) - 1
 
+	MaxStops = 1
 	attr_accessor :edges, :vertices
 
 	def initialize ()
@@ -162,14 +163,18 @@ class Graph
 
 	end
 
-	def num_trips(tail, head, max_stops = nil)
+	def num_trips(tail, head, limit = nil, limit_type = MaxStops)
 
-		frontier = [tail]
-
-		next_frontier = []
+		next_frontier = [tail]
 		trips = 0
+		trip_length = 0
 
-		loop do
+		while ! next_frontier.empty?
+
+			frontier = next_frontier
+			next_frontier = []
+
+			trip_length = trip_length + 1
 
 			frontier.each do | vertex |
 
@@ -178,8 +183,25 @@ class Graph
 					@edges[vertex].each do | next_vertex, distance |
 
 						if next_vertex == head
-							trips = trips + 1
-							return trips
+
+							if limit && limit_type
+
+								case limit_type
+
+								when MaxStops
+									if trip_length > limit
+										return trips
+									else
+										trips = trips + 1
+									end
+
+								end
+
+							else
+								trips = trips + 1
+								return trips
+							end
+
 						end
 
 						next_frontier.push next_vertex
@@ -189,11 +211,6 @@ class Graph
 				end
 
 			end
-
-			break if next_frontier.empty?
-
-			frontier = next_frontier
-			next_frontier = []
 
 		end
 
