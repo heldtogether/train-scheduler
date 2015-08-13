@@ -8,10 +8,16 @@ class Graph
 	attr_accessor :edges, :vertices
 
 	def initialize ()
+		@vertices = []
 		@edges = {}
 	end
 
 	def add_edge(tail, head, weight)
+		if ! @vertices.include? tail
+			@vertices.push tail
+		end
+		if ! @vertices.include? head
+			@vertices.push head
 		end
 		if ! @edges.has_key? tail
 			@edges[tail] = {}
