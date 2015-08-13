@@ -95,8 +95,6 @@ class Graph
 				unvisited.push(vertex)
 			end
 
-			distances[tail] = 0
-
 			current_distance = 0
 			current_vertex = tail
 			next_vertex = nil
@@ -135,7 +133,9 @@ class Graph
 
 				end
 
-				unvisited.delete(current_vertex)
+				if (current_distance == 0) && (current_vertex != tail)
+					unvisited.delete(current_vertex)
+				end
 
 				new_distance = @edges[current_vertex][next_vertex]
 

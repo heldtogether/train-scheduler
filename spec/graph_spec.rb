@@ -120,7 +120,7 @@ RSpec.describe Graph do
 	it "can return shortest path when 1 vertex" do
 
 		shortest_paths = Hash.new
-		shortest_paths['A'] = 0;
+		shortest_paths['A'] = Graph::MAX;
 
 		graph = Graph.new
 		graph.add_vertex('A')
@@ -131,7 +131,7 @@ RSpec.describe Graph do
 	it "can return shortest path when 2 vertices" do
 
 		shortest_paths = Hash.new
-		shortest_paths['A'] = 0;
+		shortest_paths['A'] = Graph::MAX;
 		shortest_paths['B'] = 5;
 
 		graph = Graph.new
@@ -145,7 +145,7 @@ RSpec.describe Graph do
 	it "can return shortest path when 3 vertices" do
 
 		shortest_paths = Hash.new
-		shortest_paths['A'] = 0;
+		shortest_paths['A'] = Graph::MAX;
 		shortest_paths['B'] = 5;
 		shortest_paths['C'] = 9;
 
@@ -161,7 +161,7 @@ RSpec.describe Graph do
 	it "can return shortest path when choice of paths" do
 
 		shortest_paths = Hash.new
-		shortest_paths['A'] = 0;
+		shortest_paths['A'] = Graph::MAX;
 		shortest_paths['B'] = 5;
 		shortest_paths['C'] = 8;
 
@@ -178,7 +178,7 @@ RSpec.describe Graph do
 	it "can return shortest path when unconnected vertices" do
 
 		shortest_paths = Hash.new
-		shortest_paths['A'] = 0;
+		shortest_paths['A'] = Graph::MAX;
 		shortest_paths['B'] = 5;
 		shortest_paths['C'] = 8;
 		shortest_paths['D'] = Graph::MAX;
@@ -211,6 +211,17 @@ RSpec.describe Graph do
 		graph.add_edge('B', 'C', 4)
 		graph.add_edge('C', 'A', 5)
 		expect(graph.shortest_path('A', 'C')).to eq 9
+
+	end
+
+	it "don't consider the initial vertex visited until revisited" do
+
+		graph = Graph.new
+		graph.add_vertex('D')
+		graph.add_edge('A', 'B', 5)
+		graph.add_edge('B', 'C', 4)
+		graph.add_edge('C', 'A', 5)
+		expect(graph.shortest_path('A', 'A')).to eq 14
 
 	end
 
