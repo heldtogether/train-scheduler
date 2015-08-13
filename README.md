@@ -19,7 +19,7 @@ then run the tests with
 
 ## Graph Class
 
-There is a Graph class which contains virtually all the code to solve the problems set in this task.
+There is a `Graph` class which contains virtually all the code to solve the problems set in this task.
 
 #### Properties
 
@@ -67,11 +67,13 @@ Returns the length of an edge between the `tail` and `head` vertices. If no edge
 
 Performs a slightly modified version of Dijkstra's algorithm to find the shortest paths between the `tail` vertex and all other vertices in the graph. If `head` is supplied, the method will return as soon as it reaches the shortest path to that vertex.
 
+The modification allows us to assess paths which return to the `tail` vertex. It assumes that "for a given route, the starting and ending town will not be the same town".
+
 #### Shortest Path
 
 	shortest_path(tail, head)
 
-As above, but returns a single number which represents the distance between the `tail` and `head` vertices.
+As above, but returns a single number which represents the shortest path between the `tail` and `head` vertices.
 
 #### Number of Trips
 
@@ -81,14 +83,14 @@ Performs a breadth-first search of the graph to find the number of possible trip
 
 Possible values for `limit_type` are
 
-- Graph::MaxStops
+- `Graph::MaxStops`
 
   Find trips which have a maximum number of stops. For example, "the number of trips starting at C and ending at C with a maximum of 3 stops."
 
-- Graph::ExactStops
+- `Graph::ExactStops`
 
   Find trips which have an exact number of stops. For example, "the number of trips starting at A and ending at C with exactly 4 stops."
 
-- Graph::MaxDistance
+- `Graph::MaxDistance`
 
   Find trips which have a maximum distance travelled. For example, "the number of different routes from C to C with a distance of less than 30."
