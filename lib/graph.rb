@@ -191,6 +191,7 @@ class Graph
 								case limit_type
 
 								when MaxStops
+
 									if trip_length > limit
 										return trips
 									else
