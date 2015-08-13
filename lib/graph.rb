@@ -5,22 +5,23 @@ class Graph
 	class NoRouteException < Exception
 	end
 
-	attr_accessor :vertices
+	attr_accessor :edges, :vertices
 
 	def initialize ()
-		@vertices = {}
+		@edges = {}
 	end
 
 	def add_edge(tail, head, weight)
-		if ! @vertices.has_key? tail
-			@vertices[tail] = {}
 		end
-		@vertices[tail][head] = weight
+		if ! @edges.has_key? tail
+			@edges[tail] = {}
+		end
+		@edges[tail][head] = weight
 	end
 
 	def edge_distance(tail, head)
-		if (@vertices.has_key? tail) && (@vertices[tail].has_key? head)
-			return @vertices[tail][head]
+		if (@edges.has_key? tail) && (@edges[tail].has_key? head)
+			return @edges[tail][head]
 		else
 			raise NoRouteException.new
 		end
@@ -29,13 +30,13 @@ class Graph
 	def path_distance(path)
 		begin
 			if path.count >= 2
-				previous_node = nil
+				previous_vertex = nil
 				distance = 0
-				path.each do | node |
-					if previous_node
-						distance += edge_distance(previous_node, node)
+				path.each do | vertex |
+					if previous_vertex
+						distance += edge_distance(previous_vertex, vertex)
 					end
-					previous_node = node
+					previous_vertex = vertex
 				end
 				return distance
 			else
