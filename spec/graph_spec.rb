@@ -64,4 +64,15 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return distance to vertex 4 edges away" do
+
+		graph = Graph.new
+		graph.add_edge('A', 'E', 7)
+		graph.add_edge('E', 'B', 3)
+		graph.add_edge('B', 'C', 4)
+		graph.add_edge('C', 'D', 8)
+		expect(graph.path_distance(['A', 'E', 'B', 'C', 'D'])).to eq 22
+
+	end
+
 end
