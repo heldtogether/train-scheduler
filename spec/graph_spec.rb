@@ -128,4 +128,18 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return shortest path when 2 vertices" do
+
+		shortest_path = Hash.new
+		shortest_path['A'] = 0;
+		shortest_path['B'] = 5;
+
+		graph = Graph.new
+		graph.add_vertex('A')
+		graph.add_vertex('B')
+		graph.add_edge('A', 'B', 5)
+		expect(graph.shortest_path('A')).to eq shortest_path
+
+	end
+
 end
