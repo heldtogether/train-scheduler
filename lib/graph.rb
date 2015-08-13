@@ -164,11 +164,40 @@ class Graph
 
 	def num_trips(tail, head, max_stops = nil)
 
-		if (@edges.has_key? tail) && (@edges[tail].has_key? head)
-			return 1
+		frontier = [tail]
+
+		next_frontier = []
+		trips = 0
+
+		loop do
+
+			frontier.each do | vertex |
+
+				if @edges.has_key? vertex
+
+					@edges[vertex].each do | next_vertex, distance |
+
+						if next_vertex == head
+							trips = trips + 1
+							return trips
+						end
+
+						next_frontier.push next_vertex
+
+					end
+
+				end
+
+			end
+
+			break if next_frontier.empty?
+
+			frontier = next_frontier
+			next_frontier = []
+
 		end
 
-		return 0
+		return trips
 
 	end
 
