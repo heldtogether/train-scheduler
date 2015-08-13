@@ -11,7 +11,7 @@ end
 graph = Graph.new
 
 edges.each do | edge |
-	graph.add_edge(edge[0], edge[1], edge[2].to_i)
+	graph.add_edge(edge[0], edge[1], edge[2..-1].to_i)
 end
 
 
