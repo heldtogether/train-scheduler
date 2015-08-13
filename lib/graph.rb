@@ -55,4 +55,11 @@ class Graph
 		end
 	end
 
+	def shortest_path(tail, head = nil)
+
+		distances = {}
+		return distances
+
+	end
+
 end

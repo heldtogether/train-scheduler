@@ -108,4 +108,13 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return shortest path when zero vertices" do
+
+		shortest_path = Hash.new
+
+		graph = Graph.new
+		expect(graph.shortest_path('A')).to eq shortest_path
+
+	end
+
 end
