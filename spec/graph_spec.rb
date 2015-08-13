@@ -232,4 +232,12 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return the number of trips along 1 edge" do
+
+		graph = Graph.new
+		graph.add_edge('A', 'B', 5)
+		expect(graph.num_trips('A', 'B')).to eq 1
+
+	end
+
 end

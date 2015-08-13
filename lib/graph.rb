@@ -164,6 +164,10 @@ class Graph
 
 	def num_trips(tail, head, max_stops = nil)
 
+		if (@edges.has_key? tail) && (@edges[tail].has_key? head)
+			return 1
+		end
+
 		return 0
 
 	end
