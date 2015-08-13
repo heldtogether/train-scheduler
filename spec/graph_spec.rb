@@ -277,4 +277,13 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return the number of trips along circular route less than given distance" do
+
+		graph = Graph.new
+		graph.add_edge('A', 'B', 5)
+		graph.add_edge('B', 'A', 5)
+		expect(graph.num_trips('A', 'A', 30, Graph::MaxDistance)).to eq 3
+
+	end
+
 end
