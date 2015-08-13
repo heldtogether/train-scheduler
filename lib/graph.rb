@@ -5,6 +5,10 @@ class Graph
 	class NoRouteException < Exception
 	end
 
+	N_BYTES = [42].pack('i').size
+	N_BITS = N_BYTES * 8
+	MAX = 2 ** (N_BITS - 2) - 1
+
 	attr_accessor :edges, :vertices
 
 	def initialize ()
@@ -58,6 +62,19 @@ class Graph
 	def shortest_path(tail, head = nil)
 
 		distances = {}
+		visited = {}
+
+		if (@vertices.count > 0)
+
+			@vertices.each do | vertex |
+				distances[vertex] = MAX
+				visited[vertex] = nil
+			end
+
+			distances[tail] = 0
+
+		end
+
 		return distances
 
 	end

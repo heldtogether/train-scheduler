@@ -117,4 +117,15 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return shortest path when 1 vertex" do
+
+		shortest_path = Hash.new
+		shortest_path['A'] = 0;
+
+		graph = Graph.new
+		graph.add_vertex('A')
+		expect(graph.shortest_path('A')).to eq shortest_path
+
+	end
+
 end
