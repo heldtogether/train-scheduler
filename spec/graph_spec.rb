@@ -110,60 +110,60 @@ RSpec.describe Graph do
 
 	it "can return shortest path when zero vertices" do
 
-		shortest_path = Hash.new
+		shortest_paths = Hash.new
 
 		graph = Graph.new
-		expect(graph.shortest_path('A')).to eq shortest_path
+		expect(graph.shortest_paths('A')).to eq shortest_paths
 
 	end
 
 	it "can return shortest path when 1 vertex" do
 
-		shortest_path = Hash.new
-		shortest_path['A'] = 0;
+		shortest_paths = Hash.new
+		shortest_paths['A'] = 0;
 
 		graph = Graph.new
 		graph.add_vertex('A')
-		expect(graph.shortest_path('A')).to eq shortest_path
+		expect(graph.shortest_paths('A')).to eq shortest_paths
 
 	end
 
 	it "can return shortest path when 2 vertices" do
 
-		shortest_path = Hash.new
-		shortest_path['A'] = 0;
-		shortest_path['B'] = 5;
+		shortest_paths = Hash.new
+		shortest_paths['A'] = 0;
+		shortest_paths['B'] = 5;
 
 		graph = Graph.new
 		graph.add_vertex('A')
 		graph.add_vertex('B')
 		graph.add_edge('A', 'B', 5)
-		expect(graph.shortest_path('A')).to eq shortest_path
+		expect(graph.shortest_paths('A')).to eq shortest_paths
 
 	end
 
 	it "can return shortest path when 3 vertices" do
 
-		shortest_path = Hash.new
-		shortest_path['A'] = 0;
-		shortest_path['B'] = 5;
-		shortest_path['C'] = 9;
+		shortest_paths = Hash.new
+		shortest_paths['A'] = 0;
+		shortest_paths['B'] = 5;
+		shortest_paths['C'] = 9;
 
 		graph = Graph.new
 		graph.add_vertex('A')
 		graph.add_vertex('B')
 		graph.add_edge('A', 'B', 5)
 		graph.add_edge('B', 'C', 4)
-		expect(graph.shortest_path('A')).to eq shortest_path
+		expect(graph.shortest_paths('A')).to eq shortest_paths
 
 	end
 
 	it "can return shortest path when choice of paths" do
 
-		shortest_path = Hash.new
-		shortest_path['A'] = 0;
-		shortest_path['B'] = 5;
-		shortest_path['C'] = 8;
+		shortest_paths = Hash.new
+		shortest_paths['A'] = 0;
+		shortest_paths['B'] = 5;
+		shortest_paths['C'] = 8;
 
 		graph = Graph.new
 		graph.add_vertex('A')
@@ -171,24 +171,24 @@ RSpec.describe Graph do
 		graph.add_edge('A', 'B', 5)
 		graph.add_edge('B', 'C', 4)
 		graph.add_edge('A', 'C', 8)
-		expect(graph.shortest_path('A')).to eq shortest_path
+		expect(graph.shortest_paths('A')).to eq shortest_paths
 
 	end
 
 	it "can return shortest path when unconnected vertices" do
 
-		shortest_path = Hash.new
-		shortest_path['A'] = 0;
-		shortest_path['B'] = 5;
-		shortest_path['C'] = 8;
-		shortest_path['D'] = Graph::MAX;
+		shortest_paths = Hash.new
+		shortest_paths['A'] = 0;
+		shortest_paths['B'] = 5;
+		shortest_paths['C'] = 8;
+		shortest_paths['D'] = Graph::MAX;
 
 		graph = Graph.new
 		graph.add_vertex('D')
 		graph.add_edge('A', 'B', 5)
 		graph.add_edge('B', 'C', 4)
 		graph.add_edge('A', 'C', 8)
-		expect(graph.shortest_path('A')).to eq shortest_path
+		expect(graph.shortest_paths('A')).to eq shortest_paths
 
 	end
 

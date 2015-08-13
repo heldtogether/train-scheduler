@@ -59,7 +59,7 @@ class Graph
 		end
 	end
 
-	def shortest_path(tail, head = nil)
+	def shortest_paths(tail, head = nil)
 
 		distances = {}
 		unvisited = []
