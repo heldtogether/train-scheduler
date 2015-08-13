@@ -162,4 +162,10 @@ class Graph
 
 	end
 
+	def num_trips(tail, head, max_stops = nil)
+
+		return 0
+
+	end
+
 end

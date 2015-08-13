@@ -225,4 +225,11 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return the number of trips along 0 edge" do
+
+		graph = Graph.new
+		expect(graph.num_trips('A', 'A')).to eq 0
+
+	end
+
 end
