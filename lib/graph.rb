@@ -8,7 +8,7 @@ class Graph
 		@vertices = {}
 	end
 
-	def add_vertex(tail, head, weight)
+	def add_edge(tail, head, weight)
 		if ! @vertices.has_key? tail
 			@vertices[tail] = {}
 		end
