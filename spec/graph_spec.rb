@@ -192,4 +192,15 @@ RSpec.describe Graph do
 
 	end
 
+	it "can return shortest path between two vertices" do
+
+		graph = Graph.new
+		graph.add_vertex('D')
+		graph.add_edge('A', 'B', 5)
+		graph.add_edge('B', 'C', 4)
+		graph.add_edge('A', 'C', 8)
+		expect(graph.shortest_path('A', 'B')).to eq 5
+
+	end
+
 end

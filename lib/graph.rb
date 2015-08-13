@@ -95,6 +95,11 @@ class Graph
 						if tentative_distance < current_shortest
 							current_shortest = tentative_distance
 							next_vertex = vertex
+
+							if next_vertex == head
+								break
+							end
+
 						end
 
 					end
@@ -115,6 +120,17 @@ class Graph
 		end
 
 		return distances
+
+	end
+
+	def shortest_path(tail, head)
+		paths = shortest_paths(tail, head)
+
+		if paths.has_key? head
+			return paths[head]
+		else
+			return MAX
+		end
 
 	end
 
