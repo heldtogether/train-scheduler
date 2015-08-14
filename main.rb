@@ -1,4 +1,5 @@
 require './lib/graph'
+require './lib/path_measurer'
 
 edges = []
 
@@ -9,6 +10,7 @@ end
 
 
 graph = Graph.new
+path_measurer = PathMeasurer.new(graph)
 
 edges.each do | edge |
 	graph.add_edge(edge[0], edge[1], edge[2..-1].to_i)
@@ -16,19 +18,19 @@ end
 
 
 # 1. The distance of the route A-B-C.
-puts graph.path_distance(['A', 'B', 'C'])
+puts path_measurer.distance(['A', 'B', 'C'])
 
 # 2. The distance of the route A-D.
-puts graph.path_distance(['A', 'D'])
+puts path_measurer.distance(['A', 'D'])
 
 # 3. The distance of the route A-D-C.
-puts graph.path_distance(['A', 'D', 'C'])
+puts path_measurer.distance(['A', 'D', 'C'])
 
 # 4. The distance of the route A-E-B-C-D.
-puts graph.path_distance(['A', 'E', 'B', 'C', 'D'])
+puts path_measurer.distance(['A', 'E', 'B', 'C', 'D'])
 
 # 5. The distance of the route A-E-D.
-puts graph.path_distance(['A', 'E', 'D'])
+puts path_measurer.distance(['A', 'E', 'D'])
 
 # 6. The number of trips starting at C and ending at
 # C with a maximum of 3 stops.

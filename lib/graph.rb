@@ -53,40 +53,6 @@ class Graph
 
 	end
 
-	def path_distance(path)
-
-		begin
-
-			if path.count >= 2
-
-				previous_vertex = nil
-				distance = 0
-
-				path.each do | vertex |
-
-					if previous_vertex
-						distance += edge_distance(previous_vertex, vertex)
-					end
-
-					previous_vertex = vertex
-
-				end
-
-				return distance
-
-			else
-
-				return 0
-
-			end
-
-		rescue NoRouteException
-
-			return 'NO SUCH ROUTE'
-
-		end
-	end
-
 	def shortest_paths(tail, head = nil)
 
 		distances = {}
