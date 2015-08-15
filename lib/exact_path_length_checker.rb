@@ -38,9 +38,9 @@ class ExactPathLengthChecker
 
 		possible_path_remaining = false
 
-		vertices_to_explore.each do | vertex, arrival_path |
+		vertices_to_explore.each do | vertex |
 
-			if arrival_path.count < path_length
+			if vertex[:arrival_path].count < path_length
 
 				possible_path_remaining = true
 

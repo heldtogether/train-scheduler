@@ -38,15 +38,19 @@ class PathExplorer
 
 	def explore (tail, head = nil, comparison = nil)
 
-		vertices_to_explore = {tail => []}
+		vertices_to_explore = [
+			{
+				:vertex => tail,
+				:arrival_path => []
+			}
+		]
 
 		paths = []
 
-		while vertex = vertices_to_explore.keys.pop
+		while vertex = vertices_to_explore.pop
 
-			current_path = vertices_to_explore[vertex].clone
-
-			vertices_to_explore.delete vertex
+			current_path = vertex[:arrival_path].clone
+			vertex = vertex[:vertex]
 
 			is_leaf = false
 
@@ -60,7 +64,10 @@ class PathExplorer
 
 					@graph.edges[vertex].each do | vertex, distance |
 
-						vertices_to_explore[vertex] = current_path
+						vertices_to_explore.push({
+							:vertex => vertex,
+							:arrival_path => current_path
+						})
 
 					end
 

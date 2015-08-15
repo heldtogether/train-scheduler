@@ -39,7 +39,14 @@ RSpec.describe MaxPathLengthChecker do
 
 		checker = MaxPathLengthChecker.new(graph)
 
-		expect(checker.finished_exploring?({'A' => ['A']}, 2)).to eq false
+		test_vertices = [
+			{
+				:vertex => 'A',
+				:arrival_path => ['A']
+			}
+		]
+
+		expect(checker.finished_exploring?(test_vertices, 2)).to eq false
 
 	end
 
@@ -50,7 +57,14 @@ RSpec.describe MaxPathLengthChecker do
 		checker = MaxPathLengthChecker.new(graph)
 		checker.valid_path?(['A', 'B'], 1)
 
-		expect(checker.finished_exploring?({'A' => ['A', 'B']}, 2)).to eq true
+		test_vertices = [
+			{
+				:vertex => 'A',
+				:arrival_path => ['A', 'B']
+			}
+		]
+
+		expect(checker.finished_exploring?(test_vertices, 1)).to eq true
 
 	end
 

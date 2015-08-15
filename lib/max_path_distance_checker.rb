@@ -42,9 +42,9 @@ class MaxPathDistanceChecker
 
 		possible_path_remaining = false
 
-		vertices_to_explore.each do | vertex, arrival_path |
+		vertices_to_explore.each do | vertex |
 
-			path_distance = @path_measurer.distance(arrival_path)
+			path_distance = @path_measurer.distance(vertex[:arrival_path])
 
 			if path_distance <= path_distance_limit
 
