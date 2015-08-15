@@ -13,4 +13,15 @@ RSpec.describe UniqueVertexChecker do
 
 	end
 
+	it "can't visit discovered vertex" do
+
+		graph = Graph.new
+
+		checker = UniqueVertexChecker.new(graph)
+		checker.did_visit('A')
+
+		expect(checker.should_visit?('A')).to eq false
+
+	end
+
 end
