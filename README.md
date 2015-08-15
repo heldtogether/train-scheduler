@@ -17,31 +17,26 @@ then run the tests with
 	rspec
 
 
-## Graph Class
 
-There is a `Graph` class which contains virtually all the code to solve the problems set in this task.
+## Graph
 
-#### Properties
+The `Graph` class which contains details of the vertices and edges which make up the graph.
 
-<table>
-	<tr>
-		<th>Property</th>
-		<th>Type</th>
-		<th>Use</th>
-	</tr>
-	<tr>
-		<tr>edges</tr>
-		<tr>hash</tr>
-		<tr>Stores an adjacency list of the edges in the graph.</tr>
-	</tr>
-	<tr>
-		<tr>vertices</tr>
-		<tr>array</tr>
-		<tr>Stores a list of the vertices in the graph.</tr>
-	</tr>
-</table>
+### Properties
+
+- Property: `edges`
+- Type: `hash`
+- Description: Stores an adjacency list of the edges in the graph.
+
+- Property: `vertices`
+- Type: `array`
+- Description: Stores a list of the vertices in the graph.
 
 ### Methods
+
+### Initialize
+
+    Graph.new
 
 #### Add Vertex
 
@@ -59,7 +54,51 @@ Adds a weighted edge to the graph. If the `tail` or `head` vertices don't exists
 
 	edge_distance(tail, head)
 
-Returns the length of an edge between the `tail` and `head` vertices. If no edge is present, it will return 'NO SUCH ROUTE'.
+Returns the length of an edge between the `tail` and `head` vertices. If no edge is present, it will raise `NoRouteException`.
+
+
+
+## Path Measurer
+
+The `PathMeasurer` class contains methods to measure the length of paths within the supplied `Graph`
+
+### Properties
+
+- Property: `graph`
+- Type: `Graph`
+- Description: The graph against which to perform the measurements.
+
+### Methods
+
+### Initialize
+
+    PathMeasurer.new(graph)
+
+#### Distance
+
+	distance(path)
+
+Returns the cumulative length of the edges between the vertices in the `path` array. If no path is present, it will return 'NO SUCH ROUTE'.
+
+The path array should just contain the vertices in the order in which they should be traversed. For example `path = ['A', 'D', 'C']`.
+
+
+
+## Path Searcher
+
+The `PathSearcher` class contains methods to find routes through the supplied `Graph`.
+
+### Properties
+
+- Property: `graph`
+- Type: `Graph`
+- Description: The graph to search.
+
+### Methods
+
+### Initialize
+
+    PathSearcher.new(graph)
 
 #### Shortest Paths
 
@@ -75,22 +114,93 @@ The modification allows us to assess paths which return to the `tail` vertex. It
 
 As above, but returns a single number which represents the shortest path between the `tail` and `head` vertices.
 
-#### Number of Trips
 
-	num_trips(tail, head, limit = nil, limit_type = MaxStops)
 
-Performs a breadth-first search of the graph to find the number of possible trips between the `tail` and `head` vertices. A `limit` can be supplied to allow the search to be stopped before the end of the search has been reached.
+## Path Explorer
 
-Possible values for `limit_type` are
+The `PathExplorer` class contains methods to traverse through the supplied `Graph`. It delegates the logic of deciding whether a found path is valid etc. to a supplied subclass of the `DefaultChecker` class.
 
-- `Graph::MaxStops`
+There are a number of checker classes available:
 
-  Find trips which have a maximum number of stops. For example, "the number of trips starting at C and ending at C with a maximum of 3 stops."
+- `DefaultChecker`
 
-- `Graph::ExactStops`
+  Considers all paths to be valid and will not cause the search to stop, even in the case of looping graphs.
 
-  Find trips which have an exact number of stops. For example, "the number of trips starting at A and ending at C with exactly 4 stops."
+- `ExactPathLengthChecker`
 
-- `Graph::MaxDistance`
+  Determines a path is valid and worth recording if it contains an exact number of vertices (not including the starting vertex).
 
-  Find trips which have a maximum distance travelled. For example, "the number of different routes from C to C with a distance of less than 30."
+- `MaxPathLengthChecker`
+
+  Determines a path is valid and worth recording if it has less than or equal to a given number of vertices (not including the starting vertex).
+
+- `MaxPathDistanceChecker`
+
+  Determines a path is valid and worth recording if the distance to traverse the path is strictly less than a given distance.
+
+- `UniqueVertexChecker`
+
+  Will only allow a node to be visited once and once only.
+
+### Properties
+
+- Property: `graph`
+- Type: `Graph`
+- Description: The graph to traverse.
+
+- Property: `checker`
+- Type: `DefaultChecker` (must implement )
+- Description: The graph against which to perform the measurements.
+
+### Methods
+
+### Initialize
+
+    PathExplorer.new(graph, checker)
+
+#### Explore
+
+	explore (tail, head = nil)
+
+Traverses the graph in a depth-first fashion from the `tail` vertex, returning the available paths. If a `head` vertex is supplied then only paths which reach this vertex are considered.
+
+
+
+## Path Explorer Checkers
+
+### Properties
+
+- Property: `graph`
+- Type: `Graph`
+- Description: The graph to traverse.
+
+
+### Methods
+
+### Initialize
+
+    PathExplorer.new(graph, comparison)
+
+#### Should Visit?
+
+	should_visit? (vertex, current_path)
+
+Should be called to determine if a vertex should be visited.
+
+#### Did Visit
+
+	did_visit (vertex)
+
+Should be called once a vertex has been visited.
+
+#### Valid Path?
+
+	valid_path? (path)
+
+Should be called to determine if a path being considered is valid according to the rules of the checker, e.g. does it contain the correct number of vertices?
+
+#### Finish Exploring?
+
+	finished_exploring? (vertices_to_explore)
+
+Should be called to determine if there are any paths that remain to be explored could possible meet the rules of the checker. If there are none remaining then we can stop exploring the graph.
