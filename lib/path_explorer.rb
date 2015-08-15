@@ -2,16 +2,35 @@ require_relative 'graph'
 
 class PathExplorer
 
-	def initialize (graph)
+	class DefaultChecker
+
+		def should_visit? (vertex)
+			return true
+		end
+
+		def did_visit vertex
+			# Do nothing
+		end
+
+	end
+
+	def initialize (graph, checker = nil)
 
 		@graph = graph
+
+		if ! checker
+
+			checker = DefaultChecker.new
+
+		end
+
+		@checker = checker
 
 	end
 
 	def explore (tail)
 
 		vertices_to_explore = {tail => []}
-		discovered_vertices = []
 
 		paths = []
 
@@ -21,9 +40,10 @@ class PathExplorer
 
 			vertices_to_explore.delete vertex
 
-			if ! discovered_vertices.include? vertex
+			if @checker.should_visit? vertex
 
-				discovered_vertices.push vertex
+				@checker.did_visit vertex
+
 				current_path.push vertex
 
 				if @graph.edges.has_key? vertex
