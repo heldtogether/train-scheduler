@@ -9,7 +9,7 @@ RSpec.describe UniqueVertexChecker do
 
 		checker = UniqueVertexChecker.new(graph)
 
-		expect(checker.should_visit?('A')).to eq true
+		expect(checker.should_visit? 'A').to eq true
 
 	end
 
@@ -20,7 +20,7 @@ RSpec.describe UniqueVertexChecker do
 		checker = UniqueVertexChecker.new(graph)
 		checker.did_visit('A')
 
-		expect(checker.should_visit?('A')).to eq false
+		expect(checker.should_visit? 'A').to eq false
 
 	end
 

@@ -44,19 +44,19 @@ The `Graph` class which contains details of the vertices and edges which make up
 
 #### Add Vertex
 
-	add_vertex(vertex)
+	add_vertex (vertex)
 
 Adds an unconnected vertex, labelled `vertex` to the graph.
 
 #### Add Edge
 
-	add_edge(tail, head, weight)
+	add_edge (tail, head, weight)
 
 Adds a weighted edge to the graph. If the `tail` or `head` vertices don't exists, they will be added to the graph.
 
 #### Edge Distance
 
-	edge_distance(tail, head)
+	edge_distance (tail, head)
 
 Returns the length of an edge between the `tail` and `head` vertices. If no edge is present, it will raise `NoRouteException`.
 

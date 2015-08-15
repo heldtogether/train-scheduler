@@ -60,7 +60,7 @@ class PathExplorer
 
 				if (current_path.length > 1) && ((!head && is_leaf) || (head && vertex == head))
 
-					if @checker.valid_path?(current_path)
+					if @checker.valid_path? current_path
 
 						paths.push current_path
 
@@ -70,7 +70,7 @@ class PathExplorer
 
 			end
 
-			if @checker.finished_exploring?(vertices_to_explore)
+			if @checker.finished_exploring? vertices_to_explore
 
 				break;
 

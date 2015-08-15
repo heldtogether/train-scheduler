@@ -14,7 +14,7 @@ class Graph
 
 	end
 
-	def add_vertex(vertex)
+	def add_vertex (vertex)
 
 		if ! @vertices.include? vertex
 			@vertices.push vertex
@@ -22,7 +22,7 @@ class Graph
 
 	end
 
-	def add_edge(tail, head, weight)
+	def add_edge (tail, head, weight)
 
 		add_vertex(tail)
 		add_vertex(head)
@@ -35,7 +35,7 @@ class Graph
 
 	end
 
-	def edge_distance(tail, head)
+	def edge_distance (tail, head)
 
 		if (@edges.has_key? tail) && (@edges[tail].has_key? head)
 			return @edges[tail][head]

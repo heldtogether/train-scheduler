@@ -9,7 +9,7 @@ RSpec.describe ExactPathLengthChecker do
 
 		checker = ExactPathLengthChecker.new(graph, 1)
 
-		expect(checker.valid_path?(['A', 'B'])).to eq true
+		expect(checker.valid_path? ['A', 'B']).to eq true
 
 	end
 
@@ -19,7 +19,7 @@ RSpec.describe ExactPathLengthChecker do
 
 		checker = ExactPathLengthChecker.new(graph, 1)
 
-		expect(checker.valid_path?(['A', 'B', 'C'])).to eq false
+		expect(checker.valid_path? ['A', 'B', 'C']).to eq false
 
 	end
 
@@ -36,7 +36,7 @@ RSpec.describe ExactPathLengthChecker do
 			}
 		]
 
-		expect(checker.finished_exploring?(test_vertices)).to eq false
+		expect(checker.finished_exploring? test_vertices).to eq false
 
 	end
 
@@ -53,7 +53,7 @@ RSpec.describe ExactPathLengthChecker do
 			}
 		]
 
-		expect(checker.finished_exploring?(test_vertices)).to eq true
+		expect(checker.finished_exploring? test_vertices).to eq true
 
 	end
 
