@@ -24,9 +24,13 @@ The `Graph` class which contains details of the vertices and edges which make up
 
 ### Properties
 
+#### Edges
+
 - Property: `edges`
 - Type: `hash`
 - Description: Stores an adjacency list of the edges in the graph.
+
+#### Vertices
 
 - Property: `vertices`
 - Type: `array`
@@ -62,12 +66,6 @@ Returns the length of an edge between the `tail` and `head` vertices. If no edge
 
 The `PathMeasurer` class contains methods to measure the length of paths within the supplied `Graph`
 
-### Properties
-
-- Property: `graph`
-- Type: `Graph`
-- Description: The graph against which to perform the measurements.
-
 ### Methods
 
 ### Initialize
@@ -87,12 +85,6 @@ The path array should just contain the vertices in the order in which they shoul
 ## Path Searcher
 
 The `PathSearcher` class contains methods to find routes through the supplied `Graph`.
-
-### Properties
-
-- Property: `graph`
-- Type: `Graph`
-- Description: The graph to search.
 
 ### Methods
 
@@ -144,13 +136,6 @@ There are a number of checker classes available:
 
 ### Properties
 
-- Property: `graph`
-- Type: `Graph`
-- Description: The graph to traverse.
-
-- Property: `checker`
-- Type: `DefaultChecker` (must implement )
-- Description: The graph against which to perform the measurements.
 
 ### Methods
 
@@ -168,18 +153,11 @@ Traverses the graph in a depth-first fashion from the `tail` vertex, returning t
 
 ## Path Explorer Checkers
 
-### Properties
-
-- Property: `graph`
-- Type: `Graph`
-- Description: The graph to traverse.
-
-
 ### Methods
 
 ### Initialize
 
-    PathExplorer.new(graph, comparison)
+    DefaultChecker.new(graph, comparison)
 
 #### Should Visit?
 
