@@ -8,9 +8,9 @@ class MaxPathLengthChecker
 
 	end
 
-	def should_visit? (vertex)
+	def should_visit? (vertex, current_path, path_length)
 
-		return true
+		return valid_path?(current_path, path_length)
 
 	end
 

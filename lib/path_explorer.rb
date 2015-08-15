@@ -4,7 +4,7 @@ class PathExplorer
 
 	class DefaultChecker
 
-		def should_visit? (vertex)
+		def should_visit? (vertex, current_path, path_length)
 			return true
 		end
 
@@ -54,7 +54,7 @@ class PathExplorer
 
 			is_leaf = false
 
-			if @checker.should_visit? vertex
+			if @checker.should_visit?(vertex, current_path, comparison)
 
 				@checker.did_visit vertex
 

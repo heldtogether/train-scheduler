@@ -8,9 +8,9 @@ class ExactPathLengthChecker
 
 	end
 
-	def should_visit? (vertex)
+	def should_visit? (vertex, current_path, path_length)
 
-		return true
+		return valid_path?(current_path, path_length)
 
 	end
 
@@ -28,7 +28,7 @@ class ExactPathLengthChecker
 
 		else
 
-		return false
+			return false
 
 		end
 

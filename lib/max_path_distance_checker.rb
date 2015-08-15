@@ -10,9 +10,9 @@ class MaxPathDistanceChecker
 
 	end
 
-	def should_visit? (vertex)
+	def should_visit? (vertex, current_path, path_distance_limit)
 
-		return true
+		return valid_path?(current_path, path_distance_limit)
 
 	end
 
