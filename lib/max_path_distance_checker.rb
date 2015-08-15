@@ -3,10 +3,9 @@ require_relative 'path_measurer'
 
 class MaxPathDistanceChecker
 
-	def initialize (graph, path_distance)
+	def initialize (graph)
 
 		@graph = graph
-		@path_distance = path_distance
 		@path_measurer = PathMeasurer.new(graph)
 		@finished_exploring = false
 
@@ -24,11 +23,11 @@ class MaxPathDistanceChecker
 
 	end
 
-	def valid_path? path
+	def valid_path? (path, path_distance_limit)
 
 		path_distance = @path_measurer.distance(path)
 
-		if path_distance <= @path_distance
+		if path_distance <= path_distance_limit
 
 			return true
 

@@ -8,9 +8,9 @@ RSpec.describe MaxPathDistanceChecker do
 		graph = Graph.new
 		graph.add_edge('A', 'B', 5)
 
-		checker = MaxPathDistanceChecker.new(graph, 10)
+		checker = MaxPathDistanceChecker.new(graph)
 
-		expect(checker.valid_path?(['A'])).to eq true
+		expect(checker.valid_path?(['A'], 10)).to eq true
 
 	end
 
@@ -19,9 +19,9 @@ RSpec.describe MaxPathDistanceChecker do
 		graph = Graph.new
 		graph.add_edge('A', 'B', 5)
 
-		checker = MaxPathDistanceChecker.new(graph, 5)
+		checker = MaxPathDistanceChecker.new(graph)
 
-		expect(checker.valid_path?(['A', 'B'])).to eq true
+		expect(checker.valid_path?(['A', 'B'], 5)).to eq true
 
 	end
 
@@ -30,9 +30,9 @@ RSpec.describe MaxPathDistanceChecker do
 		graph = Graph.new
 		graph.add_edge('A', 'B', 5)
 
-		checker = MaxPathDistanceChecker.new(graph, 1)
+		checker = MaxPathDistanceChecker.new(graph)
 
-		expect(checker.valid_path?(['A', 'B'])).to eq false
+		expect(checker.valid_path?(['A', 'B'], 1)).to eq false
 
 	end
 
@@ -40,9 +40,9 @@ RSpec.describe MaxPathDistanceChecker do
 
 		graph = Graph.new
 
-		checker = MaxPathDistanceChecker.new(graph, 1)
+		checker = MaxPathDistanceChecker.new(graph)
 
-		expect(checker.finished_exploring?()).to eq false
+		expect(checker.finished_exploring?).to eq false
 
 	end
 
@@ -51,10 +51,10 @@ RSpec.describe MaxPathDistanceChecker do
 		graph = Graph.new
 		graph.add_edge('A', 'B', 5)
 
-		checker = MaxPathDistanceChecker.new(graph, 1)
-		checker.valid_path?(['A', 'B'])
+		checker = MaxPathDistanceChecker.new(graph)
+		checker.valid_path?(['A', 'B'], 1)
 
-		expect(checker.finished_exploring?()).to eq true
+		expect(checker.finished_exploring?).to eq true
 
 	end
 

@@ -2,10 +2,9 @@ require_relative 'graph'
 
 class ExactPathLengthChecker
 
-	def initialize (graph, path_length)
+	def initialize (graph)
 
 		@graph = graph
-		@path_length = path_length
 		@finished_exploring = false
 
 	end
@@ -22,9 +21,9 @@ class ExactPathLengthChecker
 
 	end
 
-	def valid_path? path
+	def valid_path? (path, path_length)
 
-		if path.count == @path_length
+		if path.count == path_length
 
 			return true
 

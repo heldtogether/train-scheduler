@@ -8,11 +8,11 @@ class PathExplorer
 			return true
 		end
 
-		def did_visit vertex
+		def did_visit (vertex)
 			# Do nothing
 		end
 
-		def valid_path? path
+		def valid_path? (path, unused)
 			return true
 		end
 
@@ -36,7 +36,7 @@ class PathExplorer
 
 	end
 
-	def explore (tail)
+	def explore (tail, head = nil, comparison = nil)
 
 		vertices_to_explore = {tail => []}
 
@@ -64,7 +64,7 @@ class PathExplorer
 
 				else
 
-					if @checker.valid_path? current_path
+					if @checker.valid_path?(current_path, comparison)
 
 						paths.push current_path
 
