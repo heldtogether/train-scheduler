@@ -37,5 +37,17 @@ RSpec.describe PathExplorer do
 
 	end
 
+	it "can find all vertices in complex-edge graph" do
+
+		graph = Graph.new
+		graph.add_edge('A', 'B', 5)
+		graph.add_edge('B', 'C', 4)
+		graph.add_edge('A', 'D', 5)
+
+		path_explorer = PathExplorer.new(graph)
+
+		expect(path_explorer.explore('A')).to match_array ['A', 'B', 'C', 'D']
+
+	end
 
 end
