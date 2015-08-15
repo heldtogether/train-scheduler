@@ -14,5 +14,16 @@ RSpec.describe PathExplorer do
 
 	end
 
+	it "can find all vertices in 1-edge graph" do
+
+		graph = Graph.new
+		graph.add_edge('A', 'B', 5)
+
+		path_explorer = PathExplorer.new(graph)
+
+		expect(path_explorer.explore('A')).to eq ['A', 'B']
+
+	end
+
 
 end
