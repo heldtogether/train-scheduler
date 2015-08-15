@@ -71,4 +71,26 @@ RSpec.describe MaxPathDistanceChecker do
 
 	end
 
+	it "visit vertices when path is less than the max distance" do
+
+		graph = Graph.new
+		graph.add_edge('A', 'B', 5)
+
+		checker = MaxPathDistanceChecker.new(graph, 10)
+
+		expect(checker.should_visit?('C', ['A', 'B'])).to eq true
+
+	end
+
+	it "doesn't visit vertices when path is greater than or equal to the max distance" do
+
+		graph = Graph.new
+		graph.add_edge('A', 'B', 5)
+
+		checker = MaxPathDistanceChecker.new(graph, 1)
+
+		expect(checker.should_visit?('C', ['A', 'B'])).to eq false
+
+	end
+
 end

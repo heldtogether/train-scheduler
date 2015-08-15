@@ -12,7 +12,7 @@ class ExactPathLengthChecker < DefaultChecker
 
 	def should_visit? (vertex, current_path)
 
-		if current_path.count < @path_length
+		if current_path.count < @path_length+1
 
 			return true
 

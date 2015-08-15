@@ -67,4 +67,24 @@ RSpec.describe MaxPathLengthChecker do
 
 	end
 
+	it "visit vertices when path is less than the max length" do
+
+		graph = Graph.new
+
+		checker = MaxPathLengthChecker.new(graph, 2)
+
+		expect(checker.should_visit?('C', ['A', 'B'])).to eq true
+
+	end
+
+	it "doesn't visit vertices when path is greater than or equal to the max length" do
+
+		graph = Graph.new
+
+		checker = MaxPathLengthChecker.new(graph, 1)
+
+		expect(checker.should_visit?('C', ['A', 'B', 'C'])).to eq false
+
+	end
+
 end
