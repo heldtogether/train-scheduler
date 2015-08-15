@@ -16,7 +16,7 @@ class PathExplorer
 			return true
 		end
 
-		def finished_exploring?
+		def finished_exploring? (vertices_to_explore, unused)
 			return false
 		end
 
@@ -82,7 +82,7 @@ class PathExplorer
 
 			end
 
-			if @checker.finished_exploring?
+			if @checker.finished_exploring?(vertices_to_explore, comparison)
 
 				break;
 

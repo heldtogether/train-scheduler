@@ -42,7 +42,7 @@ RSpec.describe MaxPathDistanceChecker do
 
 		checker = MaxPathDistanceChecker.new(graph)
 
-		expect(checker.finished_exploring?).to eq false
+		expect(checker.finished_exploring?({'A' => ['A']}, 2)).to eq false
 
 	end
 
@@ -54,7 +54,7 @@ RSpec.describe MaxPathDistanceChecker do
 		checker = MaxPathDistanceChecker.new(graph)
 		checker.valid_path?(['A', 'B'], 1)
 
-		expect(checker.finished_exploring?).to eq true
+		expect(checker.finished_exploring?({'A' => ['A', 'B']}, 1)).to eq true
 
 	end
 

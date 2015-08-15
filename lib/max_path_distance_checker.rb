@@ -7,7 +7,6 @@ class MaxPathDistanceChecker
 
 		@graph = graph
 		@path_measurer = PathMeasurer.new(graph)
-		@finished_exploring = false
 
 	end
 
@@ -33,17 +32,40 @@ class MaxPathDistanceChecker
 
 		else
 
-			@finished_exploring = true
-
 			return false
 
 		end
 
 	end
 
-	def finished_exploring?
+	def finished_exploring? (vertices_to_explore, path_distance_limit)
 
-		return @finished_exploring
+		possible_path_remaining = false
+
+		vertices_to_explore.each do | vertex, arrival_path |
+
+			path_distance = @path_measurer.distance(arrival_path)
+
+			if path_distance <= path_distance_limit
+
+				possible_path_remaining = true
+
+				break
+
+			end
+
+		end
+
+		if possible_path_remaining
+
+			return false
+
+		else
+
+			return true
+
+		end
+
 
 	end
 
