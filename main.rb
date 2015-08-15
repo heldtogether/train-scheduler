@@ -66,4 +66,4 @@ puts 'Output #9: ' + path_searcher.shortest_path('B', 'B').to_s
 
 # 10. The number of different routes from C to C with
 # a distance of less than 30.
-puts 'Output #10: ' + max_path_distance_path_explorer.explore('C', 'C', 30).to_s
+puts 'Output #10: ' + max_path_distance_path_explorer.explore('C', 'C', 30).count.to_s
