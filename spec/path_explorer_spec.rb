@@ -6,9 +6,7 @@ RSpec.describe PathExplorer do
 
 	it "can find all vertices in 0-edge graph" do
 
-		expected_paths = [
-			['A']
-		]
+		expected_paths = []
 
 		graph = Graph.new
 

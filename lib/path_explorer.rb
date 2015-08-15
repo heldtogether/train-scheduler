@@ -77,7 +77,7 @@ class PathExplorer
 
 				end
 
-				if (!head && is_leaf) || (head && vertex == head)
+				if (current_path.length > 1) && ((!head && is_leaf) || (head && vertex == head))
 
 					if @checker.valid_path?(current_path, comparison)
 
