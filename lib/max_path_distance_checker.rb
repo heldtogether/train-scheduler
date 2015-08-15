@@ -1,7 +1,8 @@
 require_relative 'graph'
+require_relative 'default_checker'
 require_relative 'path_measurer'
 
-class MaxPathDistanceChecker
+class MaxPathDistanceChecker < DefaultChecker
 
 	def initialize (graph)
 

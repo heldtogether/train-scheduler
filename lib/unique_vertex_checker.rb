@@ -1,6 +1,7 @@
 require_relative 'graph'
+require_relative 'default_checker'
 
-class UniqueVertexChecker
+class UniqueVertexChecker < DefaultChecker
 
 	def initialize (graph)
 
@@ -9,7 +10,7 @@ class UniqueVertexChecker
 
 	end
 
-	def should_visit? (vertex)
+	def should_visit? (vertex, current_path = nil, path_length = nil)
 
 		if ! @discovered_vertices.include? vertex
 
@@ -29,13 +30,13 @@ class UniqueVertexChecker
 
 	end
 
-	def valid_path? path
+	def valid_path? (path, unused)
 
 		return true
 
 	end
 
-	def finished_exploring?
+	def finished_exploring? (vertices_to_explore, unused)
 
 		return false
 

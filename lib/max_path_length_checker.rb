@@ -1,6 +1,7 @@
 require_relative 'graph'
+require_relative 'default_checker'
 
-class MaxPathLengthChecker
+class MaxPathLengthChecker < DefaultChecker
 
 	def initialize (graph)
 
