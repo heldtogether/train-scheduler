@@ -29,4 +29,10 @@ class UniqueVertexChecker
 
 	end
 
+	def valid_path? path
+
+		return true
+
+	end
+
 end

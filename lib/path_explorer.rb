@@ -12,6 +12,10 @@ class PathExplorer
 			# Do nothing
 		end
 
+		def valid_path? path
+			return true
+		end
+
 	end
 
 	def initialize (graph, checker = nil)
@@ -56,7 +60,11 @@ class PathExplorer
 
 				else
 
-					paths.push current_path
+					if @checker.valid_path? current_path
+
+						paths.push current_path
+
+					end
 
 				end
 
