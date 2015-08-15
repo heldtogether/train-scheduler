@@ -22,7 +22,7 @@ class MaxPathLengthChecker
 
 	def valid_path? (path, path_length)
 
-		if path.count <= path_length
+		if path.count <= path_length + 1
 
 			return true
 
@@ -40,7 +40,7 @@ class MaxPathLengthChecker
 
 		vertices_to_explore.each do | vertex |
 
-			if vertex[:arrival_path].count < path_length
+			if vertex[:arrival_path].count < path_length + 1
 
 				possible_path_remaining = true
 

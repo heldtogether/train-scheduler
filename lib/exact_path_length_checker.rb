@@ -10,8 +10,15 @@ class ExactPathLengthChecker
 
 	def should_visit? (vertex, current_path, path_length)
 
-		return valid_path?(current_path, path_length)
+		if current_path.count < path_length+1
 
+			return true
+
+		else
+
+			return false
+
+		end
 	end
 
 	def did_visit (vertex)
@@ -22,7 +29,7 @@ class ExactPathLengthChecker
 
 	def valid_path? (path, path_length)
 
-		if path.count == path_length
+		if path.count == path_length+1
 
 			return true
 
@@ -40,7 +47,7 @@ class ExactPathLengthChecker
 
 		vertices_to_explore.each do | vertex |
 
-			if vertex[:arrival_path].count < path_length
+			if vertex[:arrival_path].count < path_length+1
 
 				possible_path_remaining = true
 
