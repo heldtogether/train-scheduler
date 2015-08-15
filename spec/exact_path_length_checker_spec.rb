@@ -23,4 +23,25 @@ RSpec.describe ExactPathLengthChecker do
 
 	end
 
+	it "doesn't declare finished exploring by default" do
+
+		graph = Graph.new
+
+		checker = ExactPathLengthChecker.new(graph, 1)
+
+		expect(checker.finished_exploring?()).to eq false
+
+	end
+
+	it "does declare finished exploring once exact path length reached" do
+
+		graph = Graph.new
+
+		checker = ExactPathLengthChecker.new(graph, 1)
+		checker.valid_path?(['A', 'B'])
+
+		expect(checker.finished_exploring?()).to eq true
+
+	end
+
 end
