@@ -3,15 +3,16 @@ require_relative 'default_checker'
 
 class MaxPathLengthChecker < DefaultChecker
 
-	def initialize (graph)
+	def initialize (graph, path_length)
 
 		@graph = graph
+		@path_length = path_length
 
 	end
 
-	def should_visit? (vertex, current_path, path_length)
+	def should_visit? (vertex, current_path)
 
-		return valid_path?(current_path, path_length)
+		return valid_path?(current_path)
 
 	end
 
@@ -21,9 +22,9 @@ class MaxPathLengthChecker < DefaultChecker
 
 	end
 
-	def valid_path? (path, path_length)
+	def valid_path? (path)
 
-		if path.count <= path_length + 1
+		if path.count <= @path_length + 1
 
 			return true
 
@@ -35,13 +36,13 @@ class MaxPathLengthChecker < DefaultChecker
 
 	end
 
-	def finished_exploring? (vertices_to_explore, path_length)
+	def finished_exploring? (vertices_to_explore)
 
 		possible_path_remaining = false
 
 		vertices_to_explore.each do | vertex |
 
-			if vertex[:arrival_path].count < path_length + 1
+			if vertex[:arrival_path].count < @path_length + 1
 
 				possible_path_remaining = true
 

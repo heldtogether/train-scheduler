@@ -2,7 +2,7 @@
 
 class DefaultChecker
 
-	def should_visit? (vertex, current_path, path_length)
+	def should_visit? (vertex, current_path)
 		return true
 	end
 
@@ -10,11 +10,11 @@ class DefaultChecker
 		# Do nothing
 	end
 
-	def valid_path? (path, unused)
+	def valid_path? (path)
 		return true
 	end
 
-	def finished_exploring? (vertices_to_explore, unused)
+	def finished_exploring? (vertices_to_explore)
 		return false
 	end
 

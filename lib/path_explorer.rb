@@ -17,7 +17,7 @@ class PathExplorer
 
 	end
 
-	def explore (tail, head = nil, comparison = nil)
+	def explore (tail, head = nil)
 
 		vertices_to_explore = [
 			{
@@ -35,7 +35,7 @@ class PathExplorer
 
 			is_leaf = false
 
-			if @checker.should_visit?(vertex, current_path, comparison)
+			if @checker.should_visit?(vertex, current_path)
 
 				@checker.did_visit vertex
 
@@ -60,7 +60,7 @@ class PathExplorer
 
 				if (current_path.length > 1) && ((!head && is_leaf) || (head && vertex == head))
 
-					if @checker.valid_path?(current_path, comparison)
+					if @checker.valid_path?(current_path)
 
 						paths.push current_path
 
@@ -70,7 +70,7 @@ class PathExplorer
 
 			end
 
-			if @checker.finished_exploring?(vertices_to_explore, comparison)
+			if @checker.finished_exploring?(vertices_to_explore)
 
 				break;
 

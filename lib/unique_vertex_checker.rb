@@ -10,7 +10,7 @@ class UniqueVertexChecker < DefaultChecker
 
 	end
 
-	def should_visit? (vertex, current_path = nil, path_length = nil)
+	def should_visit? (vertex, current_path = nil)
 
 		if ! @discovered_vertices.include? vertex
 
@@ -30,13 +30,13 @@ class UniqueVertexChecker < DefaultChecker
 
 	end
 
-	def valid_path? (path, unused)
+	def valid_path? (path)
 
 		return true
 
 	end
 
-	def finished_exploring? (vertices_to_explore, unused)
+	def finished_exploring? (vertices_to_explore)
 
 		return false
 
