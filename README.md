@@ -163,9 +163,6 @@ There are a number of checker classes available:
 
   Will only allow a node to be visited once and once only.
 
-### Properties
-
-
 ### Methods
 
 ### Initialize
