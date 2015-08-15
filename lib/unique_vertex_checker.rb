@@ -35,4 +35,10 @@ class UniqueVertexChecker
 
 	end
 
+	def finished_exploring?
+
+		return false
+
+	end
+
 end

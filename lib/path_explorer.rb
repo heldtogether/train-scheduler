@@ -16,6 +16,10 @@ class PathExplorer
 			return true
 		end
 
+		def finished_exploring?
+			return false
+		end
+
 	end
 
 	def initialize (graph, checker = nil)
@@ -67,6 +71,12 @@ class PathExplorer
 					end
 
 				end
+
+			end
+
+			if @checker.finished_exploring?
+
+				break;
 
 			end
 
