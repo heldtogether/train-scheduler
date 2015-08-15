@@ -1,4 +1,4 @@
-# Trains [![Build Status](https://travis-ci.org/heldtogether/train-scheduler.svg)](https://travis-ci.org/heldtogether/train-scheduler)
+# Trains
 ---
 
 To execute, run the following command from the project directory:
