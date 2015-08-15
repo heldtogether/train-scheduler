@@ -26,7 +26,7 @@ class MaxPathDistanceChecker
 
 		path_distance = @path_measurer.distance(path)
 
-		if path_distance <= path_distance_limit
+		if path_distance < path_distance_limit
 
 			return true
 
@@ -46,7 +46,7 @@ class MaxPathDistanceChecker
 
 			path_distance = @path_measurer.distance(vertex[:arrival_path])
 
-			if path_distance <= path_distance_limit
+			if path_distance < path_distance_limit
 
 				possible_path_remaining = true
 

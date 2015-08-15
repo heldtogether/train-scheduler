@@ -14,14 +14,14 @@ RSpec.describe MaxPathDistanceChecker do
 
 	end
 
-	it "accepts paths that are the max length" do
+	it "doesn't accept paths that are the max length" do
 
 		graph = Graph.new
 		graph.add_edge('A', 'B', 5)
 
 		checker = MaxPathDistanceChecker.new(graph)
 
-		expect(checker.valid_path?(['A', 'B'], 5)).to eq true
+		expect(checker.valid_path?(['A', 'B'], 5)).to eq false
 
 	end
 
