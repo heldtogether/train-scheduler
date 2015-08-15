@@ -48,6 +48,8 @@ class PathExplorer
 
 			vertices_to_explore.delete vertex
 
+			is_leaf = false
+
 			if @checker.should_visit? vertex
 
 				@checker.did_visit vertex
@@ -63,6 +65,12 @@ class PathExplorer
 					end
 
 				else
+
+					is_leaf = true
+
+				end
+
+				if (!head && is_leaf) || (head && vertex == head)
 
 					if @checker.valid_path?(current_path, comparison)
 
